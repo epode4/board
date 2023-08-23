@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card mt-4">
+        <div class="card-header">
+            {{post.title}}
+        </div>
+        <div class="card-body card-primary">
+            {{post.content}}
+        </div>
+        <div class="card-footer">
+            {{post.created_at}}
+        </div>
+    </div>
+
+
+{% endblock %}
