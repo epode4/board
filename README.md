@@ -30,12 +30,20 @@ python manage.py <command>
 
 1. django 프로젝트 생성 -> 가상환경 설정 -> django 설치 -> 서버 실행 확인 -> 앱 활성화(생성 및 등록)
 
-2.  pjt folder의 `urls.py`
+
+### app 전용 경로 하나 더 만들기
+
+1.  pjt folder의 `urls.py`
+
 ```python
-path('posts/',include('posts.urls')),
+urlpatterns = [
+    ...
+    path('posts/',include('posts.urls')),
+]
 ```
 
-3. app folder에 `urls.py` 생성
+2. app folder에 `urls.py` 생성
+
 ```python 
 from django.urls import path
 from . import views
@@ -46,4 +54,42 @@ urlpatterns = [
     path('', views.index, name = 'index'),
 ]
 
+```
+
+### 공용 base 만들어 쓰기
+
+1. 최상단에 `templates` folder 생성 -> 공용으로 사용할 tool인 `bass.html` 생성
+
+2. pjt folder의 `settings.py`
+
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        ...
+    }
+]
+```
+
+3. `base.html`
+- `! + tab`으로 기본틀 생성
+- 원하는 내용을 넣을 구멍 생성
+```python
+<body>
+    <div class='container'>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+```
+
+4. `appname/templates/원하는 html`
+- `block` 안에 원하는 내용 넣기
+```python
+{% enxtends 'base.html' %}
+
+{% block content %}
+    # 원하는 내용
+{% endblock %}
 ```
