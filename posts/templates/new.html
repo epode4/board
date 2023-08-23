@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<form action="" method="POST">
+<form action="{% url 'posts:create' %}" method="POST">
+    {% csrf_token %}
     <div class="mb-3">
       <label for="title" class="form-label">제목</label>
       <input type="text" class="form-control" id="title" name="title">
