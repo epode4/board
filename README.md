@@ -31,7 +31,7 @@ python manage.py <command>
 1. django 프로젝트 생성 -> 가상환경 설정 -> django 설치 -> 서버 실행 확인 -> 앱 활성화(생성 및 등록)
 
 
-### app 전용 경로 하나 더 만들기
+## app 전용 경로 하나 더 만들기
 
 1.  pjt folder의 `urls.py`
 
@@ -56,7 +56,7 @@ urlpatterns = [
 
 ```
 
-### 공용 base 만들어 쓰기
+## 공통으로 사용할 html 만들어 쓰기
 
 1. 최상단에 `templates` folder 생성 -> 공용으로 사용할 tool인 `bass.html` 생성
 
@@ -93,3 +93,7 @@ TEMPLATES = [
     # 원하는 내용
 {% endblock %}
 ```
+
+## model 생성
+
+1. app folder의 `models.py` 에 class 생성 -> `makemigration`으로 번역본 생성 -> `migrate`로 DB 반영 -> `admin.py`에 등록 -> `createsuperuser`로 관리자 계정 생성
